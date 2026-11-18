@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Horse Coat Color Simulator</title>
-  <meta name="description" content="Simulate Offspring Coat Colors Based on Parents">
+  <meta name="description" content="Generate random parents and simulate possible offspring. Accurate to real like horse coat color genetics!">
   <link rel="canonical" href="https://example.com/">
 
   <!-- Theme / browser UI -->
@@ -20,11 +20,11 @@
 
   <!-- Open Graph / social sharing -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Page Title">
-  <meta property="og:description" content="A concise description of this page.">
+  <meta property="og:title" content="Horse Color Simulator">
+  <meta property="og:description" content="Generate random parents and simulate possible offspring. Accurate to real like horse coat color genetics!">
   <meta property="og:url" content="https://example.com/">
-  <meta property="og:image" content="https://example.com/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="base-coats/bay.png">
+  <meta name="twitter:card" content="base-coats/bay.png">
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
@@ -43,7 +43,7 @@
     <div class="parents">
         <div class="mom">
             <div class="horse" id="horse-mom">
-                <img class="horse-base" src="base-coats\bay.png" alt="">
+                <img class="horse-base" src="base-coats/bay.png" alt="">
                 <div class="overlays">
                     <img class="tobiano" src="overlays\tobiano.png" alt="" >
                     <img class="roan" src="overlays\roan.png" alt="" >
@@ -54,11 +54,11 @@
         </div>
         <div class="dad">
             <div class="horse" id="horse-dad">
-                <img class="horse-base" src="base-coats\black.png" alt="">
+                <img class="horse-base" src="base-coats/black.png" alt="">
                 <div class="overlays">
-                    <img class="tobiano" src="overlays\tobiano.png" alt="" >
-                    <img class="roan" src="overlays\roan.png" alt="" >
-                    <img class="dun" src="overlays\dun.png" alt="" >
+                    <img class="tobiano" src="overlays/tobiano.png" alt="" >
+                    <img class="roan" src="overlays/roan.png" alt="" >
+                    <img class="dun" src="overlays/dun.png" alt="" >
                 </div>
             </div>
             <button type="button" class="reroll" data-target="horse-dad">Reroll dad</button>        
@@ -67,11 +67,11 @@
     <hr>
     <div class="foal">
         <div class="horse" id="horse-foal">
-            <img class="horse-base" src="base-coats\bay.png" alt="">
+            <img class="horse-base" src="base-coats/bay.png" alt="">
             <div class="overlays">
-                <img class="tobiano" src="overlays\tobiano.png" alt="" >
-                <img class="roan" src="overlays\roan.png" alt="" >
-                <img class="dun" src="overlays\dun.png" alt="" >
+                <img class="tobiano" src="overlays/tobiano.png" alt="" >
+                <img class="roan" src="overlays/roan.png" alt="" >
+                <img class="dun" src="overlays/dun.png" alt="" >
             </div>
         </div>
         <button id="horse-foal" type="button" class="reroll" data-target="horse-foal">Reroll foal</button>        
