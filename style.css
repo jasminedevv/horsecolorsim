@@ -1,0 +1,59 @@
+body {
+    background: #aaaaaa;
+    text-align: center;
+}
+
+.overlays img { visibility: hidden; }
+
+.parents {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: end;
+}
+
+.horse {
+  display: grid;
+}
+
+.horse > img,
+.horse > .overlays {
+  grid-area: 1 / 1;
+}
+.overlays {
+  display: grid;
+}
+.overlays > img {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: auto;
+}
+.horse > img,
+.horse > .overlays {
+  grid-area: 1 / 1;
+}
+.overlays {
+  display: grid;
+}
+.overlays > img {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: auto;
+}
+
+.horse > img {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: auto;
+}
+
+.horse-base img { z-index: 0; }
+
+#main {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#generate {
+    display: flex; justify-content: center; align-items: center;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Core -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Horse Coat Color Simulator</title>
+  <meta name="description" content="Simulate Offspring Coat Colors Based on Parents">
+  <link rel="canonical" href="https://example.com/">
+
+  <!-- Theme / browser UI -->
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+
+  <!-- Icons & manifest -->
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- Open Graph / social sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Page Title">
+  <meta property="og:description" content="A concise description of this page.">
+  <meta property="og:url" content="https://example.com/">
+  <meta property="og:image" content="https://example.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Script: "defer" downloads in parallel, runs after HTML is parsed -->
+  <script src="main.js" defer></script>
+
+
+
+</head>
+<body>
+  
+
+  <main id="main">
+    <h1>Horse Coat Color Simulator</h1>
+    <div class="parents">
+        <div class="mom">
+            <div class="horse" id="horse-mom">
+                <img class="horse-base" src="base-coats\bay.png" alt="">
+                <div class="overlays">
+                    <img class="tobiano" src="overlays\tobiano.png" alt="" >
+                    <img class="roan" src="overlays\roan.png" alt="" >
+                    <img class="dun" src="overlays\dun.png" alt="" >
+                </div>
+            </div>
+            <button type="button" class="reroll" data-target="horse-mom">Reroll mom</button>        
+        </div>
+        <div class="dad">
+            <div class="horse" id="horse-dad">
+                <img class="horse-base" src="base-coats\black.png" alt="">
+                <div class="overlays">
+                    <img class="tobiano" src="overlays\tobiano.png" alt="" >
+                    <img class="roan" src="overlays\roan.png" alt="" >
+                    <img class="dun" src="overlays\dun.png" alt="" >
+                </div>
+            </div>
+            <button type="button" class="reroll" data-target="horse-dad">Reroll dad</button>        
+        </div>
+    </div>
+    <hr>
+    <div class="foal">
+        <div class="horse" id="horse-foal">
+            <img class="horse-base" src="base-coats\bay.png" alt="">
+            <div class="overlays">
+                <img class="tobiano" src="overlays\tobiano.png" alt="" >
+                <img class="roan" src="overlays\roan.png" alt="" >
+                <img class="dun" src="overlays\dun.png" alt="" >
+            </div>
+        </div>
+        <button id="horse-foal" type="button" class="reroll" data-target="horse-foal">Reroll foal</button>        
+    </div>
+
+  <footer class="site-footer">
+  </footer>
+
+</body>
+</html>
