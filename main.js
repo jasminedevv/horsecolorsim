@@ -1,16 +1,16 @@
 document.querySelectorAll(".reroll").forEach((button) => {
-  button.addEventListener("click", () => reroll(button.dataset.target));
+    button.addEventListener("click", () => reroll(button.dataset.target));
 });
 
-var mom = {red:"Ee", agouti:"Ea", cream:"cc", roan:"rr", tobiano:"tt", dun:"Dd"} // bay
-var dad = {red:"Ee", agouti:"aa", cream:"Cc", roan:"rr", tobiano:"tt", dun:"Dd"} // smoky black
+var mom = { red: "Ee", agouti: "Ea", cream: "cc", roan: "rr", tobiano: "tt", dun: "Dd" } // bay
+var dad = { red: "Ee", agouti: "aa", cream: "Cc", roan: "rr", tobiano: "tt", dun: "Dd" } // smoky black
 
 const BASE_COLORS = {
-  bay:      "base-coats/bay.png",
-  chestnut: "base-coats/chestnut.png",
-  black:    "base-coats/black.png",
-  buckskin: "base-coats/buckskin.png",
-  palomino: "base-coats/palomino.png",
+    bay: "base-coats/bay.png",
+    chestnut: "base-coats/chestnut.png",
+    black: "base-coats/black.png",
+    buckskin: "base-coats/buckskin.png",
+    palomino: "base-coats/palomino.png",
 };
 
 
@@ -34,47 +34,47 @@ function getHorseBaseColor(genotype) {
 }
 
 function getHorseOverlays(genotype) {
-  const overlays = [];
+    const overlays = [];
 
-  if (genotype.roan.includes("R")) overlays.push("roan");
-  if (genotype.tobiano.includes("T")) overlays.push("tobiano");
-  if (genotype.dun.includes("D")) overlays.push("dun");
+    if (genotype.roan.includes("R")) overlays.push("roan");
+    if (genotype.tobiano.includes("T")) overlays.push("tobiano");
+    if (genotype.dun.includes("D")) overlays.push("dun");
 
-  return overlays;
+    return overlays;
 }
 
 function swapBaseColor(baseColor, horseId) {
-  const src = BASE_COLORS[baseColor];
-  const img = document.querySelector(`#${horseId} .horse-base`);
-  img.src = src;
+    const src = BASE_COLORS[baseColor];
+    const img = document.querySelector(`#${horseId} .horse-base`);
+    img.src = src;
 }
 
 function swapOverlays(overlays, horseId) {
-  const overlayImages = document.querySelectorAll(`#${horseId} .overlays img`);
+    const overlayImages = document.querySelectorAll(`#${horseId} .overlays img`);
 
-  for (const img of overlayImages) {
-    img.style.visibility = "hidden";
-  }
+    for (const img of overlayImages) {
+        img.style.visibility = "hidden";
+    }
 
-  for (const overlay of overlays) {
-    console.log(`#${horseId} .overlays .${overlay}`);
-    const img = document.querySelector(`#${horseId} .overlays .${overlay}`);
-    img.style.visibility = "visible";
-  }
+    for (const overlay of overlays) {
+        console.log(`#${horseId} .overlays .${overlay}`);
+        const img = document.querySelector(`#${horseId} .overlays .${overlay}`);
+        img.style.visibility = "visible";
+    }
 }
 
 function randomAllele(dominant, recessive) {
-  return Math.random() < 0.5 ? dominant : recessive;
+    return Math.random() < 0.5 ? dominant : recessive;
 }
 
 function randomGenotypes() {
-  const red = randomAllele("E", "e") + randomAllele("E", "e");
-  const agouti = randomAllele("A", "a") + randomAllele("A", "a");
-  const cream = randomAllele("C", "c") + randomAllele("C", "c");
-  const tobiano = randomAllele("T", "t") + randomAllele("t", "t");
-  const roan = randomAllele("R", "r") + randomAllele("r", "r");
-  const dun = randomAllele("D", "d") + randomAllele("d", "d");
-  return {red, agouti, cream, tobiano, roan, dun};
+    const red = randomAllele("E", "e") + randomAllele("E", "e");
+    const agouti = randomAllele("A", "a") + randomAllele("A", "a");
+    const cream = randomAllele("C", "c") + randomAllele("C", "c");
+    const tobiano = randomAllele("T", "t") + randomAllele("t", "t");
+    const roan = randomAllele("R", "r") + randomAllele("r", "r");
+    const dun = randomAllele("D", "d") + randomAllele("d", "d");
+    return { red, agouti, cream, tobiano, roan, dun };
 }
 
 function reroll(horse) {
@@ -101,12 +101,12 @@ function randomAlleleFrom(gene) {
 }
 
 function getFoalGenotype(mom, dad) {
-  return {
-    red: randomAlleleFrom(mom.red) + randomAlleleFrom(dad.red),
-    agouti: randomAlleleFrom(mom.agouti) + randomAlleleFrom(dad.agouti),
-    cream: randomAlleleFrom(mom.cream) + randomAlleleFrom(dad.cream),
-    tobiano: randomAlleleFrom(mom.tobiano) + randomAlleleFrom(dad.tobiano),
-    roan: randomAlleleFrom(mom.roan) + randomAlleleFrom(dad.roan),
-    dun: randomAlleleFrom(mom.dun) + randomAlleleFrom(dad.dun),
-  };
+    return {
+        red: randomAlleleFrom(mom.red) + randomAlleleFrom(dad.red),
+        agouti: randomAlleleFrom(mom.agouti) + randomAlleleFrom(dad.agouti),
+        cream: randomAlleleFrom(mom.cream) + randomAlleleFrom(dad.cream),
+        tobiano: randomAlleleFrom(mom.tobiano) + randomAlleleFrom(dad.tobiano),
+        roan: randomAlleleFrom(mom.roan) + randomAlleleFrom(dad.roan),
+        dun: randomAlleleFrom(mom.dun) + randomAlleleFrom(dad.dun),
+    };
 }

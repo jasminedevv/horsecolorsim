@@ -3,51 +3,60 @@ body {
     text-align: center;
 }
 
-.overlays img { visibility: hidden; }
+.overlays img {
+    visibility: hidden;
+}
 
 .parents {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  align-items: end;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    align-items: end;
 }
 
 .horse {
-  display: grid;
+    display: grid;
 }
 
-.horse > img,
-.horse > .overlays {
-  grid-area: 1 / 1;
+.horse>img,
+.horse>.overlays {
+    grid-area: 1 / 1;
 }
+
 .overlays {
-  display: grid;
+    display: grid;
 }
-.overlays > img {
-  grid-area: 1 / 1;
-  width: 100%;
-  height: auto;
+
+.overlays>img {
+    grid-area: 1 / 1;
+    width: 100%;
+    height: auto;
 }
-.horse > img,
-.horse > .overlays {
-  grid-area: 1 / 1;
+
+.horse>img,
+.horse>.overlays {
+    grid-area: 1 / 1;
 }
+
 .overlays {
-  display: grid;
-}
-.overlays > img {
-  grid-area: 1 / 1;
-  width: 100%;
-  height: auto;
+    display: grid;
 }
 
-.horse > img {
-  grid-area: 1 / 1;
-  width: 100%;
-  height: auto;
+.overlays>img {
+    grid-area: 1 / 1;
+    width: 100%;
+    height: auto;
 }
 
-.horse-base img { z-index: 0; }
+.horse>img {
+    grid-area: 1 / 1;
+    width: 100%;
+    height: auto;
+}
+
+.horse-base img {
+    z-index: 0;
+}
 
 #main {
     max-width: 600px;
@@ -55,5 +64,7 @@ body {
 }
 
 #generate {
-    display: flex; justify-content: center; align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
