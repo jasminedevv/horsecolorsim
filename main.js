@@ -86,6 +86,7 @@ function randomAllele(gene) {
   return Math.random() < gene.rarity ? gene.dominant : gene.recessive;
 }
 
+// todo: rewrite these confusing ass functions
 function randomGenotype(gene) {
   const first = randomAllele(gene);
   const second = gene.maxDominant === 1 ? gene.recessive : randomAllele(gene);
@@ -97,21 +98,6 @@ function randomGenotypes() {
     Object.entries(GENES).map(([name, gene]) => [name, randomGenotype(gene)])
   );
 }
-
-// function randomAllele(dominant, recessive) {
-//     return Math.random() < 0.5 ? dominant : recessive;
-// }
-
-// function randomGenotypes() {
-//     const red = randomAllele("E", "e") + randomAllele("E", "e");
-//     const agouti = randomAllele("A", "a") + randomAllele("A", "a");
-//     const cream = randomAllele("C", "c") + randomAllele("C", "c");
-//     const tobiano = randomAllele("T", "t") + randomAllele("t", "t");
-//     const roan = randomAllele("R", "r") + randomAllele("r", "r");
-//     const dun = randomAllele("D", "d") + randomAllele("d", "d");
-//     const gray = randomAllele("G", "g") + randomAllele("g", "g");
-//     return { red, agouti, cream, tobiano, roan, dun, gray };
-// }
 
 function reroll(horse) {
     if (horse === "horse-foal") {
