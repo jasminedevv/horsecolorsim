@@ -2,8 +2,8 @@ document.querySelectorAll(".reroll").forEach((button) => {
     button.addEventListener("click", () => reroll(button.dataset.target));
 });
 
-var mom = { red: "Ee", agouti: "Ea", cream: "cc", roan: "rr", tobiano: "tt", dun: "Dd" } // bay
-var dad = { red: "Ee", agouti: "aa", cream: "Cc", roan: "rr", tobiano: "tt", dun: "Dd" } // smoky black
+var mom = { red: "Ee", agouti: "Ea", cream: "cc", roan: "rr", tobiano: "tt", dun: "Dd", gray:"gg" } // bay
+var dad = { red: "Ee", agouti: "aa", cream: "Cc", roan: "rr", tobiano: "tt", dun: "Dd", gray:"gg"  } // smoky black
 
 const BASE_COLORS = {
     bay: "base-coats/bay.png",
@@ -11,14 +11,23 @@ const BASE_COLORS = {
     black: "base-coats/black.png",
     buckskin: "base-coats/buckskin.png",
     palomino: "base-coats/palomino.png",
+    cream: "base-coats/cream.png",
+    gray: "base-coats/gray.png",
 };
 
 
 // takes a genotype object and returns the phenotype name for the horse's base color
 function getHorseBaseColor(genotype) {
+    if (genotype.gray.includes('G')) {
+        return "gray"
+    }
     if (genotype.red === "ee") {
         if (genotype.cream.includes('C')) {
-            return "palomino";
+            if (genotype.cream === "CC") {
+                return "cream"
+            } else {
+                return "palomino";
+            }
         } else {
             return "chestnut";
         }
@@ -57,25 +66,52 @@ function swapOverlays(overlays, horseId) {
     }
 
     for (const overlay of overlays) {
-        console.log(`#${horseId} .overlays .${overlay}`);
         const img = document.querySelector(`#${horseId} .overlays .${overlay}`);
         img.style.visibility = "visible";
     }
 }
 
-function randomAllele(dominant, recessive) {
-    return Math.random() < 0.5 ? dominant : recessive;
+
+const GENES = {
+  red:     { dominant: "E", recessive: "e", rarity: "0.4" },
+  agouti:  { dominant: "A", recessive: "a", rarity: "0.5" },
+  cream:   { dominant: "C", recessive: "c", rarity: "0.2" },
+  tobiano: { dominant: "T", recessive: "t", rarity: "0.2" },
+  roan:    { dominant: "R", recessive: "r", rarity: "0.2" },
+  dun:     { dominant: "D", recessive: "d", rarity: "0.4" },
+  gray:    { dominant: "G", recessive: "g", rarity: "0.1" },
+};
+
+function randomAllele(gene) {
+  return Math.random() < gene.rarity ? gene.dominant : gene.recessive;
+}
+
+function randomGenotype(gene) {
+  const first = randomAllele(gene);
+  const second = gene.maxDominant === 1 ? gene.recessive : randomAllele(gene);
+  return first + second;
 }
 
 function randomGenotypes() {
-    const red = randomAllele("E", "e") + randomAllele("E", "e");
-    const agouti = randomAllele("A", "a") + randomAllele("A", "a");
-    const cream = randomAllele("C", "c") + randomAllele("C", "c");
-    const tobiano = randomAllele("T", "t") + randomAllele("t", "t");
-    const roan = randomAllele("R", "r") + randomAllele("r", "r");
-    const dun = randomAllele("D", "d") + randomAllele("d", "d");
-    return { red, agouti, cream, tobiano, roan, dun };
+  return Object.fromEntries(
+    Object.entries(GENES).map(([name, gene]) => [name, randomGenotype(gene)])
+  );
 }
+
+// function randomAllele(dominant, recessive) {
+//     return Math.random() < 0.5 ? dominant : recessive;
+// }
+
+// function randomGenotypes() {
+//     const red = randomAllele("E", "e") + randomAllele("E", "e");
+//     const agouti = randomAllele("A", "a") + randomAllele("A", "a");
+//     const cream = randomAllele("C", "c") + randomAllele("C", "c");
+//     const tobiano = randomAllele("T", "t") + randomAllele("t", "t");
+//     const roan = randomAllele("R", "r") + randomAllele("r", "r");
+//     const dun = randomAllele("D", "d") + randomAllele("d", "d");
+//     const gray = randomAllele("G", "g") + randomAllele("g", "g");
+//     return { red, agouti, cream, tobiano, roan, dun, gray };
+// }
 
 function reroll(horse) {
     if (horse === "horse-foal") {
@@ -105,6 +141,7 @@ function getFoalGenotype(mom, dad) {
         red: randomAlleleFrom(mom.red) + randomAlleleFrom(dad.red),
         agouti: randomAlleleFrom(mom.agouti) + randomAlleleFrom(dad.agouti),
         cream: randomAlleleFrom(mom.cream) + randomAlleleFrom(dad.cream),
+        gray: randomAlleleFrom(mom.gray) + randomAlleleFrom(dad.gray),
         tobiano: randomAlleleFrom(mom.tobiano) + randomAlleleFrom(dad.tobiano),
         roan: randomAlleleFrom(mom.roan) + randomAlleleFrom(dad.roan),
         dun: randomAlleleFrom(mom.dun) + randomAlleleFrom(dad.dun),
