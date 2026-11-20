@@ -4,6 +4,7 @@ document.querySelectorAll(".reroll").forEach((button) => {
 
 var mom = { red: "Ee", agouti: "Ea", cream: "cc", roan: "rr", tobiano: "tt", dun: "Dd", gray:"gg" } // bay
 var dad = { red: "Ee", agouti: "aa", cream: "Cc", roan: "rr", tobiano: "tt", dun: "Dd", gray:"gg"  } // smoky black
+var foal = {}
 
 const BASE_COLORS = {
     bay: "base-coats/bay.png",
@@ -18,16 +19,15 @@ const BASE_COLORS = {
 
 // takes a genotype object and returns the phenotype name for the horse's base color
 function getHorseBaseColor(genotype) {
+    if (genotype.cream === "CC") {
+        return "cream"
+    }
     if (genotype.gray.includes('G')) {
         return "gray"
     }
     if (genotype.red === "ee") {
         if (genotype.cream.includes('C')) {
-            if (genotype.cream === "CC") {
-                return "cream"
-            } else {
-                return "palomino";
-            }
+            return "palomino";
         } else {
             return "chestnut";
         }
@@ -72,6 +72,7 @@ function swapOverlays(overlays, horseId) {
 }
 
 
+// rarity determines how rare the dominant gene is
 const GENES = {
   red:     { dominant: "E", recessive: "e", rarity: "0.4" },
   agouti:  { dominant: "A", recessive: "a", rarity: "0.5" },
@@ -104,6 +105,8 @@ function reroll(horse) {
         var genotype = getFoalGenotype(mom, dad);
         var baseColor = getHorseBaseColor(genotype);
         var overlays = getHorseOverlays(genotype)
+        // for debugging
+        foal = genotype
     } else if (horse === "horse-mom") {
         mom = randomGenotypes();
         var baseColor = getHorseBaseColor(mom);
